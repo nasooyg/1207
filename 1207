@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘의 설거지 담당은?</title>
+    <style>
+        /* 모바일 우선 스타일링 */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            font-family: 'Pretendard', -apple-system, sans-serif;
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            margin-bottom: 30px;
+            word-break: keep-all;
+        }
+
+        .result-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e91e63;
+            display: none; /* 처음엔 숨김 */
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        button {
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.1s, background-color 0.2s;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        button:active {
+            transform: scale(0.95);
+            background-color: #357ABD;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="main-screen">
+            <span class="emoji">🧼</span>
+            <h1>김윤재와 나수영 중<br>오늘 저녁 설거지 당첨은?</h1>
+            <p style="color: #666; margin-bottom: 20px;">버튼을 눌러보세요!</p>
+            <button onclick="showResult()">랜덤으로 당첨됩니다.</button>
+        </div>
+
+        <div id="result-screen" class="result-text">
+            <span class="emoji">🏆</span>
+            <p>축하합니다!</p>
+            <p>"최고의 남편 김윤재 당첨!"</p>
+            <p style="font-size: 0.9rem; color: #888; font-weight: normal; margin-top: 20px;">
+                운명은 거스를 수 없습니다.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showResult() {
+            // 메인 화면 숨기기
+            document.getElementById('main-screen').style.display = 'none';
+            // 결과 화면 보이기
+            document.getElementById('result-screen').style.display = 'block';
+            
+            // 기분 좋은 진동 효과 (지원하는 모바일 기기만)
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate(200);
+            }
+        }
+    </script>
+</body>
+</html>
